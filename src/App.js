@@ -1,5 +1,6 @@
 import React from "react";
-import PostList from "./PostList";
+import PostList from "./component/PostList";
+import AddNewPostForm from "./component/AddNewPostForm";
 
 class App extends React.Component {
   constructor() {
@@ -10,49 +11,8 @@ class App extends React.Component {
     };
   }
 
-  addPost = () => {
-    console.log(`click Add`);
-    fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "POST",
-      body: JSON.stringify({
-        title: `{title}`,
-        body: `{body}`,
-        userId: `{id}`,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json));
-  };
-
-  editPost = () => {
-    console.log(`click Edit`);
-    fetch("https://jsonplaceholder.typicode.com/posts/{id}", {
-      method: "PATCH",
-      body: JSON.stringify({
-        title: `{title}`,
-        body: `{body}`,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json));
-  };
-
-  deletePost = () => {
-    console.log(`click Delete`);
-    fetch(`https://jsonplaceholder.typicode.com/posts/{id}`, {
-      method: "DELETE",
-    }).then((response) => {
-      console.log(response);
-    });
-  };
-
   componentDidMount() {
+    console.log(`componentDidMount`);
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
       .then(
@@ -70,12 +30,15 @@ class App extends React.Component {
       );
   }
 
-  componentDidUpdate(prevProps) {}
+  componentDidUpdate(prevState) {
+    console.log(`componentDidUpdate`);
+  }
 
   render() {
     const { posts } = this.state;
     return (
       <>
+        <AddNewPostForm />
         <PostList posts={posts} />
       </>
     );
