@@ -1,6 +1,7 @@
 import React from "react";
-import PostList from "./component/PostList";
-import AddNewPostForm from "./component/AddNewPostForm";
+// import PostList from "./component/PostList";
+// import AddNewPostForm from "./component/AddNewPostForm";
+import Form from "./component/Form";
 
 class App extends React.Component {
   constructor() {
@@ -35,11 +36,12 @@ class App extends React.Component {
   }
 
   render() {
-    const { posts } = this.state;
+    // const { posts } = this.state;
     return (
       <>
-        <AddNewPostForm />
-        <PostList posts={posts} />
+        <Form />
+        {/* <AddNewPostForm />
+        <PostList posts={posts} /> */}
       </>
     );
   }

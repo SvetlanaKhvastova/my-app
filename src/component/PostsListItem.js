@@ -18,7 +18,7 @@ class PostListItem extends React.Component {
     let { id, title, body } = this.props;
     return (
       <>
-        <li id={id}>
+        <li key={id} id={id}>
           <h2> {title}</h2>
           <p>{body}</p>
           <div>
